@@ -4,6 +4,17 @@
 // For example, `remove(['Cadence', 'Ordel', 'Marion'], 'Marion')` results
 // in `['Cadence', 'Ordel']`.
 //
+
+function remove (array, potential) {
+  let newArray = [];
+  for (let item of array) {
+    if (item !== potential) {
+      newArray.push(item)
+    }
+  }
+  return newArray
+}
+
 // If the potential member is not in the array, return the array unchanged.
 // If the potential member is in the array, remove all instances of it from the array.
 
@@ -13,12 +24,34 @@
 // 3. Create a function called "sum" that takes an array of numbers and
 // returns the sum of those numbers.
 
+function sum (numbers) {
+  let sum = 0
+  for (let num of numbers){
+    sum += num
+  }
+  return sum
+}
+
 // 4. Create a function called "average" that takes an array of numbers
 // and returns the average of those numbers.
+
+function average (numbers) {
+ let avg = sum(numbers) / numbers.length
+  return avg || undefined;
+}
 
 // 5. Create a function called "minimum" that takes an array of numbers and
 // returns the smallest number in that array.
 
+function minimum (numbers){
+  let min = numbers[0];
+  for (let num of numbers) {
+    if (num <= min) {
+      min = num
+    }
+  }
+  return min
+}
 // 6. There are many techniques to sort arrays in programming. Your programming
 // language will likely include the ability to do this. We are going to
 // implement sorting ourselves, however.
@@ -43,9 +76,38 @@
 // https://courses.cs.vt.edu/csonline/Algorithms/Lessons/SelectionSort/index.html
 // to see how. This may make more sense to you.
 
+ function selectionSort(array){
+  for (var i = 0; i < array.length; i++){
+    //set min to the current iteration of i
+    var min = i;
+    for(var j = i+1; j < array.length; j++){
+      if(array[j] < array[min]){
+       min = j;
+      }
+    }
+    var temp = array[i];
+    array[i] = array[min];
+    array[min] = temp;
+  }
+  return array;
+};
+
+
+
 // 7. Create a function called `textList` that takes an array and joins its elements
 // into a string separated by commas.
 //
 // For example, `textList(['Cadence', 'Ordel', 'Marion'])` results in the string
 // `"Cadence,Ordel,Marion"`.
 
+function textList (array) {
+  for (let num of array) {
+    if (array.length === 1) {
+      return array.join(" ")
+    }
+    else {
+   return array.join(",");
+    }
+  }
+  return array
+}
